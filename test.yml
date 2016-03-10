@@ -1,0 +1,10 @@
+#!/usr/bin/env ansible-playbook
+- name: test
+  hosts: vagrant1
+  gather_facts: False
+  tasks: 
+    - name: show return value of command module
+      command: id -un
+      register: login
+    - debug: msg="Logged in as user {{ login.start }}"
+#    - debug: var=login
